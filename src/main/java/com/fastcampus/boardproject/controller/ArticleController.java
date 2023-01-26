@@ -20,6 +20,6 @@ public class ArticleController {
     public String article(@PathVariable Long articleId, ModelMap map) {
         map.addAttribute("article", null);
         map.addAttribute("articleComments", List.of());
-        return "articles/index";
+        return "articles/detail";
     }
 }
