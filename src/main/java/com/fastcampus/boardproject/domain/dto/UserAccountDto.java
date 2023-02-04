@@ -14,7 +14,7 @@ public record UserAccountDto(Long ID, String userId, String userPassword, String
     }
     public static UserAccountDto from(UserAccount entity) {
         return new UserAccountDto(
-                entity.getID(),
+                entity.getId(),
                 entity.getUserId(),
                 entity.getUserPassword(),
                 entity.getEmail(),

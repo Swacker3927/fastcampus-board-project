@@ -25,7 +25,7 @@ public record ArticleWithCommentsDto(
 
     public static ArticleWithCommentsDto from(Article entity) {
         return new ArticleWithCommentsDto(
-                entity.getID(),
+                entity.getId(),
                 UserAccountDto.from(entity.getUserAccount()),
                 entity.getArticleComments().stream()
                         .map(ArticleCommentDto::from)

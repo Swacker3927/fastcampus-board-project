@@ -18,7 +18,7 @@ import java.util.Objects;
 public class ArticleComment extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
     @Setter
     @ManyToOne(optional = false)
@@ -47,11 +47,11 @@ public class ArticleComment extends AuditingFields {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ArticleComment that)) return false;
-        return this.getID() != null && this.getID().equals(that.getID());
+        return this.getId() != null && this.getId().equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getID());
+        return Objects.hash(this.getId());
     }
 }

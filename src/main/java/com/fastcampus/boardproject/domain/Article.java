@@ -21,7 +21,7 @@ import java.util.Set;
 public class Article extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
     @Setter @ManyToOne(optional = false) private UserAccount userAccount;   // 유저 정보 (ID)
 
@@ -52,11 +52,11 @@ public class Article extends AuditingFields {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Article that)) return false;
-        return this.getID() != null && this.getID().equals(that.getID());
+        return this.getId() != null && this.getId().equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getID());
+        return Objects.hash(this.getId());
     }
 }

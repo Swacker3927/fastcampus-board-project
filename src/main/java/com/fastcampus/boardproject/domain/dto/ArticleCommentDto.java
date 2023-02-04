@@ -23,8 +23,8 @@ public record ArticleCommentDto(
 
     public static ArticleCommentDto from(ArticleComment entity) {
         return new ArticleCommentDto(
-                entity.getID(),
-                entity.getArticle().getID(),
+                entity.getId(),
+                entity.getArticle().getId(),
                 UserAccountDto.from(entity.getUserAccount()),
                 entity.getContent(),
                 entity.getCreatedAt(),

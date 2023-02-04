@@ -23,7 +23,7 @@ public record ArticleDto(Long ID,
 
     public static ArticleDto from(Article entity) {
         return new ArticleDto(
-                entity.getID(),
+                entity.getId(),
                 UserAccountDto.from(entity.getUserAccount()),
                 entity.getTitle(),
                 entity.getContent(),
