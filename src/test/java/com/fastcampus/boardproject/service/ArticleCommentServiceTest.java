@@ -83,7 +83,7 @@ class ArticleCommentServiceTest {
         String updatedContent = "댓글";
         ArticleComment articleComment = createArticleComment(oldContent);
         ArticleCommentDto dto = createArticleCommentDto(updatedContent);
-        given(articleCommentRepository.getReferenceById(dto.ID())).willReturn(articleComment);
+        given(articleCommentRepository.getReferenceById(dto.id())).willReturn(articleComment);
 
         // When
         sut.updateArticleComment(dto);
@@ -92,7 +92,7 @@ class ArticleCommentServiceTest {
         assertThat(articleComment.getContent())
                 .isNotEqualTo(oldContent)
                 .isEqualTo(updatedContent);
-        then(articleCommentRepository).should().getReferenceById(dto.ID());
+        then(articleCommentRepository).should().getReferenceById(dto.id());
     }
 
     @DisplayName("없는 댓글 정보를 수정하려고 하면, 경고 로그를 찍고 아무 것도 안 한다.")
@@ -100,13 +100,13 @@ class ArticleCommentServiceTest {
     void givenNonexistentArticle_whenUpdatingArticleComment_thenLogsSituationAndDoesNothing() {
         // Given
         ArticleCommentDto dto = createArticleCommentDto("댓글");
-        given(articleCommentRepository.getReferenceById(dto.ID())).willThrow(EntityNotFoundException.class);
+        given(articleCommentRepository.getReferenceById(dto.id())).willThrow(EntityNotFoundException.class);
 
         // When
         sut.updateArticleComment(dto);
 
         // Then
-        then(articleCommentRepository).should().getReferenceById(dto.ID());
+        then(articleCommentRepository).should().getReferenceById(dto.id());
     }
 
     @DisplayName("댓글 ID를 입력하면, 해당 댓글을 삭제한다.")

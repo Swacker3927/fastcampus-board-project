@@ -116,7 +116,7 @@ class ArticleServiceTest {
         // Given
         Article article = createArticle();
         ArticleDto dto = createArticleDto("새 타이틀", "새 내용", "#Spring_Boot");
-        given(articleRepository.getReferenceById(dto.ID())).willReturn(article);
+        given(articleRepository.getReferenceById(dto.id())).willReturn(article);
 
         // When
         sut.updateArticle(dto);
@@ -126,7 +126,7 @@ class ArticleServiceTest {
                 .hasFieldOrPropertyWithValue("title", dto.title())
                 .hasFieldOrPropertyWithValue("content", dto.content())
                 .hasFieldOrPropertyWithValue("hashtag", dto.hashtag());
-        then(articleRepository).should().getReferenceById(dto.ID());
+        then(articleRepository).should().getReferenceById(dto.id());
     }
 
     @DisplayName("없는 게시글의 수정 정보를 입력하면, 경고 로그를 찍고 아무 것도 하지 않는다.")
@@ -134,13 +134,13 @@ class ArticleServiceTest {
     void givenNonexistentArticleInfo_whenUpdatingArticle_thenLogWarningAndDoesNothing() {
         // Given
         ArticleDto dto = createArticleDto("새 타이틀", "새 내용", "#Spring_Boot");
-        given(articleRepository.getReferenceById(dto.ID())).willThrow(EntityNotFoundException.class);
+        given(articleRepository.getReferenceById(dto.id())).willThrow(EntityNotFoundException.class);
 
         // When
         sut.updateArticle(dto);
 
         // Then
-        then(articleRepository).should().getReferenceById(dto.ID());
+        then(articleRepository).should().getReferenceById(dto.id());
     }
 
     @DisplayName("게시글의 ID를 입력하면, 게시글을 삭제한다.")
