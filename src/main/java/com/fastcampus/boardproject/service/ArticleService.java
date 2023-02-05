@@ -47,7 +47,7 @@ public class ArticleService {
 
     public void updateArticle(ArticleDto dto) {
         try {
-            Article article = articleRepository.getReferenceById(dto.ID());
+            Article article = articleRepository.getReferenceById(dto.id());
             if (dto.title() != null) article.setTitle(dto.title());
             if (dto.content() != null) article.setContent(dto.content());
             article.setHashtag(dto.hashtag());
