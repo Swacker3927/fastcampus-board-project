@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * A DTO for the {@link com.fastcampus.boardproject.domain.ArticleComment} entity
  */
 public record ArticleCommentDto(
-        Long ID,
+        Long id,
         Long articleId,
         UserAccountDto userAccountDto,
         String content,
@@ -17,8 +17,8 @@ public record ArticleCommentDto(
         LocalDateTime modifiedAt,
         String modifiedBy
 ) {
-    public static ArticleCommentDto of(Long ID, Long articleId, UserAccountDto userAccountDto, String content, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
-        return new ArticleCommentDto(ID, articleId, userAccountDto, content, createdAt, createdBy, modifiedAt, modifiedBy);
+    public static ArticleCommentDto of(Long id, Long articleId, UserAccountDto userAccountDto, String content, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new ArticleCommentDto(id, articleId, userAccountDto, content, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
     public static ArticleCommentDto from(ArticleComment entity) {
