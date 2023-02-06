@@ -39,5 +39,4 @@ public record ArticleWithCommentsDto(
                 entity.getModifiedBy()
         );
     }
-
 }
