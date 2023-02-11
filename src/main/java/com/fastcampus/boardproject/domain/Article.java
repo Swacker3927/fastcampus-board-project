@@ -33,7 +33,7 @@ public class Article extends AuditingFields {
     @ToString.Exclude
     @OrderBy("createdAt DESC")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
+    private final Set<ArticleComment> articleComment = new LinkedHashSet<>();
 
     protected Article() {}
 
@@ -51,12 +51,12 @@ public class Article extends AuditingFields {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Article that)) return false;
-        return this.getId() != null && this.getId().equals(that.getId());
+        if (!(o instanceof Article article)) return false;
+        return id != null && this.id.equals(article.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId());
+        return Objects.hash(id);
     }
 }

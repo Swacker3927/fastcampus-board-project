@@ -10,7 +10,7 @@ import java.util.Objects;
 @Getter
 @ToString(callSuper = true)
 @Table(indexes = {
-        @Index(columnList = "userId", unique = true),
+        @Index(columnList = "userId"),
         @Index(columnList = "email", unique = true),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
@@ -28,8 +28,7 @@ public class UserAccount extends AuditingFields {
     @Setter @Column(length = 100) private String nickname;
     @Setter private String memo;
 
-    protected UserAccount() {
-    }
+    protected UserAccount() {}
 
     private UserAccount(String userId, String userPassword, String email, String nickname, String memo) {
         this.userId = userId;
@@ -46,12 +45,12 @@ public class UserAccount extends AuditingFields {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserAccount that)) return false;
-        return this.getId() != null && this.getId().equals(that.getId());
+        if (!(o instanceof UserAccount userAccount)) return false;
+        return id != null && id.equals(userAccount.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId());
+        return Objects.hash(id);
     }
 }
