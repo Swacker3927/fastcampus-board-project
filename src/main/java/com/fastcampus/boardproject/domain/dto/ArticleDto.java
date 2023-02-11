@@ -7,15 +7,16 @@ import java.time.LocalDateTime;
 /**
  * A DTO for the {@link com.fastcampus.boardproject.domain.Article} entity
  */
-public record ArticleDto(Long id,
-                         UserAccountDto userAccountDto,
-                         String title,
-                         String content,
-                         String hashtag,
-                         LocalDateTime createdAt,
-                         String createdBy,
-                         LocalDateTime modifiedAt,
-                         String modifiedBy
+public record ArticleDto(
+        Long id,
+        UserAccountDto userAccountDto,
+        String title,
+        String content,
+        String hashtag,
+        LocalDateTime createdAt,
+        String createdBy,
+        LocalDateTime modifiedAt,
+        String modifiedBy
 ) {
     public static ArticleDto of(Long id, UserAccountDto userAccountDto, String title, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
         return new ArticleDto(id, userAccountDto, title, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
