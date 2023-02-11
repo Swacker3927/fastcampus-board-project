@@ -542,11 +542,10 @@ Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
        (1, 'Ut tellus.', 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
 
 Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', null, 'Wilmer', 'Ingra',
-        '2021-07-19 14:18:17', '2022-01-23 17:29:54')
-;
+        '2021-07-19 14:18:17', '2022-01-23 17:29:54');
 
 -- 1000 댓글
-insert into article_comment (article_id, user_id, content, created_at, modified_at, created_by, modified_by)
+insert into article_comment (article_id, user_account_id, content, created_at, modified_at, created_by, modified_by)
 values (49, 1,
         'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.',
         '2021-03-02 22:40:04', '2021-04-27 15:38:09', 'Lind', 'Orv'),
@@ -1333,5 +1332,4 @@ values (49, 1,
        (56, 1, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', '2021-11-18 01:32:48', '2021-06-06 01:59:25',
         'Vittorio', 'Milty'),
        (19, 1, 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', '2021-05-07 23:57:29',
-        '2021-04-03 21:55:11', 'Oliver', 'Graehme')
-;
+        '2021-04-03 21:55:11', 'Oliver', 'Graehme');
