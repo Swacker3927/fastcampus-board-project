@@ -2,7 +2,7 @@ package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.config.*;
 import com.fastcampus.boardproject.domain.dto.*;
-import com.fastcampus.boardproject.service.ArticleService;
+import com.fastcampus.boardproject.service.*;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 import static org.mockito.BDDMockito.*;
@@ -29,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ArticleControllerTest {
     private final MockMvc mvc;
 
-    @MockBean
-    private ArticleService articleService;
+    @MockBean private ArticleService articleService;
+    @MockBean private PaginationService paginationService;
 
     ArticleControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
@@ -41,14 +42,17 @@ class ArticleControllerTest {
     void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
         // Given
         given(articleService.searchArticles(eq(null), eq(null), any(Pageable.class))).willReturn(Page.empty());
+        given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(0, 1, 2, 3, 4));
 
         // When & Then
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
-                .andExpect(model().attributeExists("articles"));
+                .andExpect(model().attributeExists("articles"))
+                .andExpect(model().attributeExists("paginationBarNumbers"));
         then(articleService).should().searchArticles(eq(null), eq(null), any(Pageable.class));
+        then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
 
     @DisplayName("[view][GET] 게시글 상세 페이지 - 정상 호출")
