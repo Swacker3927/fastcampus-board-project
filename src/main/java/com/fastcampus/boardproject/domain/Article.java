@@ -37,15 +37,15 @@ public class Article extends AuditingFields {
 
     protected Article() {}
 
-    private Article(UserAccount userAccount, String title, String content, String hashtag) {
-        this.userAccount = userAccount;
+    private Article(String title, UserAccount userAccount, String content, String hashtag) {
         this.title = title;
+        this.userAccount = userAccount;
         this.content = content;
         this.hashtag = hashtag;
     }
 
-    public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
-        return new Article(userAccount, title, content, hashtag);
+    public static Article of(String title, UserAccount userAccount, String content, String hashtag) {
+        return new Article(title, userAccount, content, hashtag);
     }
 
     @Override
