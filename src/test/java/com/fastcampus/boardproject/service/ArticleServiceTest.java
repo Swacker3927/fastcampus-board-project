@@ -43,7 +43,7 @@ class ArticleServiceTest {
         then(articleRepository).should().findAll(pageable);
     }
 
-    @DisplayName("검색어 없이 게시글을 검색하면, 게시글 페이지를 반환한다.")
+    @DisplayName("검색어와 함께 게시글을 검색하면, 게시글 페이지를 반환한다.")
     @Test
     void givenSearchParameters_whenSearchingArticles_thenReturnsArticleList() {
         // Given
@@ -157,10 +157,25 @@ class ArticleServiceTest {
         then(articleRepository).should().deleteById(articleId);
     }
 
+    @DisplayName("게시글 수를 조회하면, 게시글 수를 반환한다.")
+    @Test
+    void givenNothing_whenCountingArticles_thenReturnsArticleCount() {
+        // Given
+        long expected = 0l;
+        given(articleRepository.count()).willReturn(expected);
+
+        // When
+        long actual = sut.getArticleCount();
+
+        // Then
+        assertThat(actual).isEqualTo(expected);
+        then(articleRepository).should().count();
+    }
+
     private Article createArticle() {
         return Article.of(
-                createUserAccount(),
                 "title",
+                createUserAccount(),
                 "content",
                 "#java"
         );
@@ -183,14 +198,15 @@ class ArticleServiceTest {
     private ArticleDto createArticleDto(String title, String content, String hashtag) {
         return ArticleDto.of(
                 1L,
-                createUserAccountDto(),
                 title,
+                createUserAccountDto(),
                 content,
                 hashtag,
                 LocalDateTime.now(),
                 "Uno",
                 LocalDateTime.now(),
-                "Uno");
+                "Uno"
+        );
     }
 
     private UserAccountDto createUserAccountDto() {

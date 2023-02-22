@@ -153,8 +153,8 @@ class ArticleCommentServiceTest {
 
     private Article createArticle() {
         return Article.of(
-                createUserAccount(),
                 "title",
+                createUserAccount(),
                 "content",
                 "#JAVA"
         );
@@ -162,7 +162,7 @@ class ArticleCommentServiceTest {
 
     private ArticleComment createArticleComment(String content) {
         return ArticleComment.of(
-                Article.of(createUserAccount(), "title", "content", "hashtag"),
+                Article.of("title", createUserAccount(), "content", "hashtag"),
                 createUserAccount(),
                 content
         );
