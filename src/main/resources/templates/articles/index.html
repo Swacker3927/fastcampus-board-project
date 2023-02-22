@@ -18,14 +18,14 @@
             <div class="row">
                 <div class="card card-margin search-form">
                     <div class="card-body p-0">
-                        <form id="card search-form">
+                        <form action="/articles">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row no-gutters">
                                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                             <!-- 필터: 제목, 본문, ID, 닉네임, 해시태그 -->
                                             <label for="search-type" hidden>유형</label>
-                                            <select id="search-type" class="form-control">
+                                            <select id="search-type" class="form-control" name="searchType">
                                                 <option>제목</option>
                                                 <option>본문</option>
                                                 <option>ID</option>
@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-lg-8 col-md-6 col-sm-12 p-0">
                                             <label for="search-value" hidden>검색어</label>
-                                            <input id="search-value" name="search-value" class="form-control" placeholder="검색어...">
+                                            <input id="search-value" class="form-control" name="searchValue" placeholder="검색어...">
                                         </div>
                                         <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                             <button type="submit" class="btn btn-base">
