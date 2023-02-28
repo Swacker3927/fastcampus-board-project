@@ -1,8 +1,8 @@
 package com.fastcampus.boardproject.service;
 
 import com.fastcampus.boardproject.domain.*;
+import com.fastcampus.boardproject.domain.constant.*;
 import com.fastcampus.boardproject.domain.dto.*;
-import com.fastcampus.boardproject.domain.type.*;
 import com.fastcampus.boardproject.repository.*;
 
 import lombok.RequiredArgsConstructor;
@@ -20,10 +20,22 @@ import java.util.List;
 @Transactional
 @Service
 public class ArticleService {
+    private final UserAccountRepository userAccountRepository;
     private final ArticleRepository articleRepository;
 
     @Transactional(readOnly = true)
-    public ArticleWithCommentsDto getArticle(Long articleId) {
+    public ArticleDto getArticle(Long articleId) {
+        return articleRepository.findById(articleId)
+                .map(ArticleDto::from)
+                .orElseThrow(() -> new EntityNotFoundException("게시글이 없습니다. - articleId: " + articleId));
+    }
+
+    public long getArticleCount() {
+        return articleRepository.count();
+    }
+
+    @Transactional(readOnly = true)
+    public ArticleWithCommentsDto getArticleWithComments(Long articleId) {
         return articleRepository.findById(articleId)
                 .map(ArticleWithCommentsDto::from)
                 .orElseThrow(() -> new EntityNotFoundException("게시글이 없습니다. - articleId: " + articleId));
@@ -42,10 +54,6 @@ public class ArticleService {
         };
     }
 
-    public long getArticleCount() {
-        return articleRepository.count();
-    }
-
     @Transactional(readOnly = true)
     public Page<ArticleDto> searchArticlesViaHashtag(String hashtag, Pageable pageable) {
         if (hashtag == null || hashtag.isBlank()) {
@@ -59,12 +67,13 @@ public class ArticleService {
     }
 
     public void saveArticle(ArticleDto dto) {
-        articleRepository.save(dto.toEntity());
+        UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
+        articleRepository.save(dto.toEntity(userAccount));
     }
 
-    public void updateArticle(ArticleDto dto) {
+    public void updateArticle(Long articleId, ArticleDto dto) {
         try {
-            Article article = articleRepository.getReferenceById(dto.id());
+            Article article = articleRepository.getReferenceById(articleId);
             if (dto.title() != null) article.setTitle(dto.title());
             if (dto.content() != null) article.setContent(dto.content());
             article.setHashtag(dto.hashtag());
