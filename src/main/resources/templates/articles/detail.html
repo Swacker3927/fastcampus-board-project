@@ -18,7 +18,7 @@
                 <h1>첫 번째 글</h1>
             </header>
             <div class="row g-5">
-                <section class="col-md-5 col-lg-4 order-md-last">
+                <section class="col-md-3 col-lg-4 order-md-last">
                     <aside>
                         <p><span>Uno</span></p>
                         <p><a href="mailto:sai6321@naver.com">uno@gmail.com</a></p>
@@ -26,25 +26,33 @@
                         <p><span>#JAVA</span></p>
                     </aside>
                 </section>
-                <article id="article-content" class="col-md-7 col-lg-8">
+                <article id="article-content" class="col-md-9 col-lg-8">
                     <pre>본문</pre>
                 </article>
+            </div>
+            <div id="article-buttons" class="row g-5">
+                <form id="delete-article-form">
+                    <div class="pb-5 d-grid gap-2 d-md-block">
+                        <a id="update-article" class="btn btn-success me-md-2" role="button">수정</a>
+                        <button type="submit" class="btn btn-danger me-md-2">삭제</button>
+                    </div>
+                </form>
             </div>
             <div class="row g-5">
                 <section>
                     <form class="row g-3">
-                        <div class="col-8">
+                        <div class="col-md-9 col-lg-8">
                             <label for="comment-textbox" hidden>댓글</label>
                             <textarea id="comment-textbox" class="form-control" rows="3" placeholder="댓글 쓰기..."></textarea>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-md-3 col-lg-4">
                             <label for="comment-submit" hidden>댓글 쓰기</label>
                             <button id="comment-submit" type="submit" class="btn btn-primary">쓰기</button>
                         </div>
                     </form>
-                    <ul class="row col-7">
+                    <ul class="row col-md-10 col-lg-8 pt-3">
                         <li>
-                            <div>
+                            <div class="row">
                                 <strong>Uno</strong>
                                 <small><time>2022-01-01</time></small>
                                 <p>
