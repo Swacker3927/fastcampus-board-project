@@ -86,7 +86,7 @@ class ArticleServiceTest {
         given(articleRepository.findByHashtag(hashtag, pageable)).willReturn(Page.empty(pageable));
 
         // When
-        Page<ArticleDto> articles = sut.searchArticlesViaHashtag(null, pageable);
+        Page<ArticleDto> articles = sut.searchArticlesViaHashtag(hashtag, pageable);
 
         // Then
         assertThat(articles).isEqualTo(Page.empty(pageable));
