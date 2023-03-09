@@ -2,9 +2,9 @@ package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.config.*;
 import com.fastcampus.boardproject.domain.constant.*;
-import com.fastcampus.boardproject.domain.dto.*;
-import com.fastcampus.boardproject.domain.dto.request.*;
-import com.fastcampus.boardproject.domain.dto.response.*;
+import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.request.ArticleRequest;
+import com.fastcampus.boardproject.dto.response.ArticleResponse;
 import com.fastcampus.boardproject.service.*;
 import com.fastcampus.boardproject.util.*;
 

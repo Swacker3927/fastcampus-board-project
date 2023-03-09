@@ -1,8 +1,8 @@
 package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.config.*;
-import com.fastcampus.boardproject.domain.dto.*;
-import com.fastcampus.boardproject.domain.dto.request.*;
+import com.fastcampus.boardproject.dto.ArticleCommentDto;
+import com.fastcampus.boardproject.dto.request.ArticleCommentRequest;
 import com.fastcampus.boardproject.service.*;
 import com.fastcampus.boardproject.util.FormDataEncoder;
 

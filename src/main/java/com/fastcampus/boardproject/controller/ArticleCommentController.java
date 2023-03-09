@@ -1,7 +1,7 @@
 package com.fastcampus.boardproject.controller;
 
-import com.fastcampus.boardproject.domain.dto.request.*;
-import com.fastcampus.boardproject.domain.dto.security.BoardPrincipal;
+import com.fastcampus.boardproject.dto.request.ArticleCommentRequest;
+import com.fastcampus.boardproject.dto.security.BoardPrincipal;
 import com.fastcampus.boardproject.service.*;
 
 import lombok.RequiredArgsConstructor;

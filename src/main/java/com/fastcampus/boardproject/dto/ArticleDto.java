@@ -1,4 +1,4 @@
-package com.fastcampus.boardproject.domain.dto;
+package com.fastcampus.boardproject.dto;
 
 import com.fastcampus.boardproject.domain.*;
 

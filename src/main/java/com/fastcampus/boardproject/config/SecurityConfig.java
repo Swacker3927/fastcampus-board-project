@@ -1,7 +1,7 @@
 package com.fastcampus.boardproject.config;
 
-import com.fastcampus.boardproject.domain.dto.UserAccountDto;
-import com.fastcampus.boardproject.domain.dto.security.BoardPrincipal;
+import com.fastcampus.boardproject.dto.UserAccountDto;
+import com.fastcampus.boardproject.dto.security.BoardPrincipal;
 import com.fastcampus.boardproject.repository.UserAccountRepository;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;

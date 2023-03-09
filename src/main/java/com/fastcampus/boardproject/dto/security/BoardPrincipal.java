@@ -1,6 +1,6 @@
-package com.fastcampus.boardproject.domain.dto.security;
+package com.fastcampus.boardproject.dto.security;
 
-import com.fastcampus.boardproject.domain.dto.UserAccountDto;
+import com.fastcampus.boardproject.dto.UserAccountDto;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

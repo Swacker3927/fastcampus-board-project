@@ -2,7 +2,7 @@ package com.fastcampus.boardproject.service;
 
 import com.fastcampus.boardproject.domain.*;
 import com.fastcampus.boardproject.domain.constant.*;
-import com.fastcampus.boardproject.domain.dto.*;
+import com.fastcampus.boardproject.dto.*;
 import com.fastcampus.boardproject.repository.*;
 
 import org.junit.jupiter.api.DisplayName;
