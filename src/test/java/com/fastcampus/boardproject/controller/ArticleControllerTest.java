@@ -265,7 +265,7 @@ class ArticleControllerTest {
         // Given
         long articleId = 1L;
         ArticleDto dto = createArticleDto();
-        given(articleService.getArticle(articleId));
+        given(articleService.getArticle(articleId)).willReturn(dto);
 
         // When & Then
         mvc.perform(get("/articles/" + articleId + "/form"))
