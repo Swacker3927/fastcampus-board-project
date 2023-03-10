@@ -2,12 +2,23 @@ package com.fastcampus.boardproject.dto.request;
 
 import com.fastcampus.boardproject.dto.*;
 
-public record ArticleRequest(String title, String content, String hashtag) {
-    public static ArticleRequest of(String title, String content, String hashtag) {
-        return new ArticleRequest(title, content, hashtag);
+import java.util.Set;
+
+public record ArticleRequest(String title, String content) {
+    public static ArticleRequest of(String title, String content) {
+        return new ArticleRequest(title, content);
     }
 
     public ArticleDto toDto(UserAccountDto userAccountDto) {
-        return ArticleDto.of(title, userAccountDto, content, hashtag);
+        return toDto(userAccountDto, null);
+    }
+
+    public ArticleDto toDto(UserAccountDto userAccountDto, Set<HashtagDto> hashtagDtos) {
+        return ArticleDto.of(
+                title,
+                userAccountDto,
+                content,
+                hashtagDtos
+        );
     }
 }

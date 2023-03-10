@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
@@ -128,6 +129,25 @@ class ArticleCommentServiceTest {
         then(articleCommentRepository).should().deleteByIdAndUserAccount_UserId(articleCommentId, userId);
     }
 
+    private Article createArticle() {
+        Article article = Article.of(
+                "title",
+                createUserAccount(),
+                "content"
+        );
+        article.addHashtags(Set.of(createHashtag(article)));
+
+        return article;
+    }
+
+    private ArticleComment createArticleComment(String content) {
+        return ArticleComment.of(
+                createArticle(),
+                createUserAccount(),
+                content
+        );
+    }
+
     private ArticleCommentDto createArticleCommentDto(String content) {
         return ArticleCommentDto.of(
                 1L,
@@ -138,6 +158,20 @@ class ArticleCommentServiceTest {
                 "uno",
                 LocalDateTime.now(),
                 "uno"
+        );
+    }
+
+    private Hashtag createHashtag(Article article) {
+        return Hashtag.of("JAVA");
+    }
+
+    private UserAccount createUserAccount() {
+        return UserAccount.of(
+                "uno",
+                "password",
+                "uno@email.com",
+                "Uno",
+                null
         );
     }
 
@@ -152,33 +186,6 @@ class ArticleCommentServiceTest {
                 "uno",
                 LocalDateTime.now(),
                 "uno"
-        );
-    }
-
-    private Article createArticle() {
-        return Article.of(
-                "title",
-                createUserAccount(),
-                "content",
-                "#JAVA"
-        );
-    }
-
-    private ArticleComment createArticleComment(String content) {
-        return ArticleComment.of(
-                Article.of("title", createUserAccount(), "content", "hashtag"),
-                createUserAccount(),
-                content
-        );
-    }
-
-    private UserAccount createUserAccount() {
-        return UserAccount.of(
-                "uno",
-                "password",
-                "uno@email.com",
-                "Uno",
-                null
         );
     }
 }
