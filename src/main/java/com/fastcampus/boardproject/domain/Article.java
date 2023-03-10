@@ -34,7 +34,7 @@ public class Article extends AuditingFields {
     @ToString.Exclude
     @JoinTable(
             name = "article_hashtag",
-            joinColumns = @JoinColumn(name = "articleId"),
+            joinColumns = @JoinColumn(name = "articlerId"),
             inverseJoinColumns = @JoinColumn(name = "hashtagId")
     )
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
