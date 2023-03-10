@@ -6,7 +6,7 @@ import com.fastcampus.boardproject.dto.*;
 import com.fastcampus.boardproject.dto.request.ArticleRequest;
 import com.fastcampus.boardproject.dto.response.ArticleResponse;
 import com.fastcampus.boardproject.service.*;
-import com.fastcampus.boardproject.util.*;
+import com.fastcampus.boardproject.util.FormDataEncoder;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -65,7 +65,8 @@ class ArticleControllerTest {
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"))
                 .andExpect(model().attributeExists("paginationBarNumbers"))
-                .andExpect(model().attributeExists("searchTypes"));
+                .andExpect(model().attributeExists("searchTypes"))
+                .andExpect(model().attribute("searchTypeHashtag", SearchType.HASHTAG));
         then(articleService).should().searchArticles(eq(null), eq(null), any(Pageable.class));
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
@@ -141,7 +142,8 @@ class ArticleControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"))
-                .andExpect(model().attributeExists("searchTypes"));
+                .andExpect(model().attributeExists("searchTypes"))
+                .andExpect(model().attribute("searchTypeHashtag", SearchType.HASHTAG));
         then(articleService).should().searchArticles(eq(searchType), eq(searchValue), any(Pageable.class));
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
@@ -227,16 +229,16 @@ class ArticleControllerTest {
     @Test
     void givenNewArticleInfo_whenRequesting_thenSavesNewArticle() throws Exception {
         // Given
-        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content", "#new");
+        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content");
         willDoNothing().given(articleService).saveArticle(any(ArticleDto.class));
 
         // When & Then
         mvc.perform(
-                post("/articles/form")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .content(formDataEncoder.encode(articleRequest))
-                        .with(csrf())
-        )
+                        post("/articles/form")
+                                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                                .content(formDataEncoder.encode(articleRequest))
+                                .with(csrf())
+                )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/articles"))
                 .andExpect(redirectedUrl("/articles"));
@@ -259,12 +261,12 @@ class ArticleControllerTest {
     @DisplayName("[view][GET] 게시글 수정 페이지 - 정상 호출, 인증된 페이지")
     @WithMockUser
     @Test
-    void givenNothing_whenRequesting_thenReturnsUpdatedArticlePage() throws Exception {
+    void givenAuthorizedUser_whenRequesting_thenReturnsUpdatedArticlePage() throws Exception {
         // Given
         long articleId = 1L;
         ArticleDto dto = createArticleDto();
         given(articleService.getArticle(articleId));
-        
+
         // When & Then
         mvc.perform(get("/articles/" + articleId + "/form"))
                 .andExpect(status().isOk())
@@ -281,17 +283,17 @@ class ArticleControllerTest {
     void givenUpdatedArticleInfo_whenRequesting_thenUpdatesNewArticle() throws Exception {
         // Given
         long articleId = 1L;
-        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content", "#new");
+        ArticleRequest articleRequest = ArticleRequest.of("new title", "new content");
         willDoNothing().given(articleService).updateArticle(eq(articleId), any(ArticleDto.class));
 
         // When & Then
         mvc.perform(
-                post("/articles/" + articleId + "/form")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .content(formDataEncoder.encode(articleRequest))
-                        .with(csrf())
+                        post("/articles/" + articleId + "/form")
+                                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                                .content(formDataEncoder.encode(articleRequest))
+                                .with(csrf())
 
-        )
+                )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/articles/" + articleId))
                 .andExpect(redirectedUrl("/articles/" + articleId));
@@ -325,7 +327,7 @@ class ArticleControllerTest {
                 "title",
                 createUserAccountDto(),
                 "content",
-                "#JAVA"
+                Set.of(HashtagDto.of("JAVA"))
         );
     }
 
@@ -336,7 +338,7 @@ class ArticleControllerTest {
                 Set.of(),
                 "title",
                 "content",
-                "#JAVA",
+                Set.of(HashtagDto.of("JAVA")),
                 LocalDateTime.now(),
                 "uno",
                 LocalDateTime.now(),

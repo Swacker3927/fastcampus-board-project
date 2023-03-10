@@ -3,6 +3,8 @@ package com.fastcampus.boardproject.dto;
 import com.fastcampus.boardproject.domain.*;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A DTO for the {@link com.fastcampus.boardproject.domain.Article} entity
@@ -12,18 +14,18 @@ public record ArticleDto(
         String title,
         UserAccountDto userAccountDto,
         String content,
-        String hashtag,
+        Set<HashtagDto> hashtagDtos,
         LocalDateTime createdAt,
         String createdBy,
         LocalDateTime modifiedAt,
         String modifiedBy
 ) {
-    public static ArticleDto of(String title, UserAccountDto userAccountDto, String content, String hashtag) {
-        return new ArticleDto(null, title, userAccountDto, content, hashtag, null, null, null, null);
+    public static ArticleDto of(String title, UserAccountDto userAccountDto, String content, Set<HashtagDto> hashtagDtos) {
+        return new ArticleDto(null, title, userAccountDto, content, hashtagDtos, null, null, null, null);
     }
 
-    public static ArticleDto of(Long id, String title, UserAccountDto userAccountDto, String content, String hashtag, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
-        return new ArticleDto(id, title, userAccountDto, content, hashtag, createdAt, createdBy, modifiedAt, modifiedBy);
+    public static ArticleDto of(Long id, String title, UserAccountDto userAccountDto, String content, Set<HashtagDto> hashtagDtos, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+        return new ArticleDto(id, title, userAccountDto, content, hashtagDtos, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
     public static ArticleDto from(Article entity) {
@@ -32,7 +34,10 @@ public record ArticleDto(
                 entity.getTitle(),
                 UserAccountDto.from(entity.getUserAccount()),
                 entity.getContent(),
-                entity.getHashtag(),
+                entity.getHashtags().stream()
+                        .map(HashtagDto::from)
+                        .collect(Collectors.toUnmodifiableSet())
+                ,
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),
                 entity.getModifiedAt(),
@@ -44,8 +49,7 @@ public record ArticleDto(
         return Article.of(
                 title,
                 userAccount,
-                content,
-                hashtag
+                content
         );
     }
 }
