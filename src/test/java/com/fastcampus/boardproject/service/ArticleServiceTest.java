@@ -134,7 +134,7 @@ class ArticleServiceTest {
                 .hasFieldOrPropertyWithValue("content", article.getContent())
                 .hasFieldOrPropertyWithValue("hashtagDtos", article.getHashtags().stream()
                         .map(HashtagDto::from)
-                        .collect(Collectors.toUnmodifiableList())
+                        .collect(Collectors.toUnmodifiableSet())
                 );
         then(articleRepository).should().findById(articleId);
     }
@@ -156,7 +156,7 @@ class ArticleServiceTest {
                 .hasFieldOrPropertyWithValue("content", article.getContent())
                 .hasFieldOrPropertyWithValue("hashtagDtos", article.getHashtags().stream()
                         .map(HashtagDto::from)
-                        .collect(Collectors.toUnmodifiableList())
+                        .collect(Collectors.toUnmodifiableSet())
                 );
         then(articleRepository).should().findById(articleId);
     }
