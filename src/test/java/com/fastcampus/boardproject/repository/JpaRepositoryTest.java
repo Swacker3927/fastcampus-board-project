@@ -50,7 +50,7 @@ class JpaRepositoryTest {
         // Then
         assertThat(articles)
                 .isNotNull()
-                .hasSize(0);
+                .hasSize(123); // classpath:resources/data.sql 참조
     }
 
     @DisplayName("insert 테스트")
@@ -114,7 +114,7 @@ class JpaRepositoryTest {
         List<String> hashtagNames = hashtagRepository.findAllHashtagNames();
 
         // Then
-        assertThat(hashtagNames).hasSize(0);
+        assertThat(hashtagNames).hasSize(19);
     }
 
     @DisplayName("[Querydsl] hashtag로 페이징된 게시글 검색하기")
