@@ -9,7 +9,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/board
+    url: jdbc:postgresql://127.0.0.1:5432/board
     username: lee31
     password: 1234
   jpa:
