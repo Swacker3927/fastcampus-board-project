@@ -35,8 +35,8 @@ class ArticleCommentServiceTest {
     void givenArticleId_whenSearchingArticleComments_thenReturnsArticleComments() {
         // Given
         Long articleId = 1L;
-        ArticleComment expectedParentComment = createArticleComment(1L, "parent comment");
-        ArticleComment expectedChildComment = createArticleComment(2L, "child comment");
+        ArticleComment expectedParentComment = createArticleComment(1L, "parent content");
+        ArticleComment expectedChildComment = createArticleComment(2L, "child content");
         expectedChildComment.setParentCommentId(expectedParentComment.getId());
         given(articleCommentRepository.findByArticle_Id(articleId)).willReturn(List.of(
                 expectedParentComment,

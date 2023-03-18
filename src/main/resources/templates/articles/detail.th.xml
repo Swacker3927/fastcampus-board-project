@@ -46,6 +46,7 @@
                     </attr>
                 </attr>
             </attr>
+            <attr sel=".parent-comment-id" th:name="parentCommentId" th:value="${articleComment.id}" />
         </attr>
 
         <attr sel="#pagination">
