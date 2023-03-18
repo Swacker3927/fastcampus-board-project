@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,7 +38,7 @@ public class ArticleComment extends AuditingFields {
     @ToString.Exclude
     @OrderBy("createdAt")
     @OneToMany(mappedBy = "parentCommentId", cascade = CascadeType.ALL)
-    private Set<ArticleComment> childComments = new HashSet<>();
+    private Set<ArticleComment> childComments = new LinkedHashSet<>();
 
     @Setter @Column(nullable = false, length = 500) private String content; // 내용
 
