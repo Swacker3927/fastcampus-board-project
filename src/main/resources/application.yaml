@@ -9,9 +9,9 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/board
-    username: lee31
-    password: 1234
+    url: ${LOCAL_DB_URL}
+    username: ${LOCAL_DB_USERNAME}
+    password: ${LOCAL_DB_PASSWORD}
   jpa:
     open-in-view: false
     defer-datasource-initialization: true
@@ -26,3 +26,9 @@ spring:
     detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
+
+---
+
+spring:
+  config.activate.on-profile: test
+  datasource.url: jdbc:h2:mem:testdb
