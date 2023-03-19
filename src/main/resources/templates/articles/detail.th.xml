@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <thlogic>
     <attr sel="#header" th:replace="header :: header"/>
     <attr sel="#footer" th:replace="footer :: footer"/>
@@ -11,9 +11,10 @@
               th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm:ss')}"/>
         <attr sel="#hashtag" th:each="hashtag : ${article.hashtags}">
             <attr sel="a" th:text="'#' + ${hashtag}"
-                  th:href="@{/articles(searchTypes=${searchTypeHashtag}, searchValue=${hashtag})}"
+                  th:href="@{/articles(searchType=${searchTypeHashtag}, searchValue=${hashtag})}"
             />
         </attr>
+
         <attr sel="#article-content/pre" th:text="*{content}"/>
 
         <attr sel="#article-buttons" th:if="${#authorization.expression('isAuthenticated()')} and *{userId} == ${#authentication.name}">
