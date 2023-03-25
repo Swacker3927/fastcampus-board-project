@@ -1,6 +1,7 @@
 package com.fastcampus.boardproject.dto.request;
 
-import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.ArticleCommentDto;
+import com.fastcampus.boardproject.dto.UserAccountDto;
 
 public record ArticleCommentRequest(
         Long articleId,

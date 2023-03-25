@@ -1,6 +1,7 @@
 package com.fastcampus.boardproject.dto.response;
 
-import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.ArticleDto;
+import com.fastcampus.boardproject.dto.HashtagDto;
 
 import java.time.LocalDateTime;
 import java.util.Set;

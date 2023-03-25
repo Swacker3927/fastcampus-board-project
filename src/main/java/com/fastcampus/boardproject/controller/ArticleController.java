@@ -2,9 +2,11 @@ package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.domain.constant.*;
 import com.fastcampus.boardproject.dto.request.ArticleRequest;
-import com.fastcampus.boardproject.dto.response.*;
+import com.fastcampus.boardproject.dto.response.ArticleResponse;
+import com.fastcampus.boardproject.dto.response.ArticleWithCommentsResponse;
 import com.fastcampus.boardproject.dto.security.BoardPrincipal;
-import com.fastcampus.boardproject.service.*;
+import com.fastcampus.boardproject.service.ArticleService;
+import com.fastcampus.boardproject.service.PaginationService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

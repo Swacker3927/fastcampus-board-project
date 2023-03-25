@@ -1,6 +1,8 @@
 package com.fastcampus.boardproject.dto.request;
 
-import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.ArticleDto;
+import com.fastcampus.boardproject.dto.HashtagDto;
+import com.fastcampus.boardproject.dto.UserAccountDto;
 
 import java.util.Set;
 
