@@ -76,7 +76,7 @@ public record BoardPrincipal(
     @Override public Map<String, Object> getAttributes() { return oAuth2Attributes; }
     @Override public String getName() { return username; }
 
-    public enum RoleType {
+    enum RoleType {
         USER("ROLE_USER");
 
         @Getter private final String name;
