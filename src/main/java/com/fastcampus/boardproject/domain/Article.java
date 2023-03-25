@@ -57,10 +57,6 @@ public class Article extends AuditingFields {
         return new Article(title, userAccount, content);
     }
 
-    public void addHashtag(Hashtag hashtag) {
-        this.getHashtags().add(hashtag);
-    }
-
     public void addHashtags(Collection<Hashtag> hashtags) {
         this.getHashtags().addAll(hashtags);
     }

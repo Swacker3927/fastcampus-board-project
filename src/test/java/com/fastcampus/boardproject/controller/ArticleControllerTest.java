@@ -2,10 +2,14 @@ package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.config.*;
 import com.fastcampus.boardproject.domain.constant.*;
-import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.ArticleDto;
+import com.fastcampus.boardproject.dto.ArticleWithCommentsDto;
+import com.fastcampus.boardproject.dto.HashtagDto;
+import com.fastcampus.boardproject.dto.UserAccountDto;
 import com.fastcampus.boardproject.dto.request.ArticleRequest;
 import com.fastcampus.boardproject.dto.response.ArticleResponse;
-import com.fastcampus.boardproject.service.*;
+import com.fastcampus.boardproject.service.ArticleService;
+import com.fastcampus.boardproject.service.PaginationService;
 import com.fastcampus.boardproject.util.FormDataEncoder;
 
 import org.junit.jupiter.api.DisplayName;

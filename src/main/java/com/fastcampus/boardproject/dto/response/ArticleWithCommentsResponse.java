@@ -1,6 +1,8 @@
 package com.fastcampus.boardproject.dto.response;
 
-import com.fastcampus.boardproject.dto.*;
+import com.fastcampus.boardproject.dto.ArticleCommentDto;
+import com.fastcampus.boardproject.dto.ArticleWithCommentsDto;
+import com.fastcampus.boardproject.dto.HashtagDto;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;

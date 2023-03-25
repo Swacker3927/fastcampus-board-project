@@ -3,7 +3,7 @@ package com.fastcampus.boardproject.controller;
 import com.fastcampus.boardproject.config.*;
 import com.fastcampus.boardproject.dto.ArticleCommentDto;
 import com.fastcampus.boardproject.dto.request.ArticleCommentRequest;
-import com.fastcampus.boardproject.service.*;
+import com.fastcampus.boardproject.service.ArticleCommentService;
 import com.fastcampus.boardproject.util.FormDataEncoder;
 
 import org.junit.jupiter.api.DisplayName;

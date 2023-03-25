@@ -2,7 +2,7 @@ package com.fastcampus.boardproject.controller;
 
 import com.fastcampus.boardproject.dto.request.ArticleCommentRequest;
 import com.fastcampus.boardproject.dto.security.BoardPrincipal;
-import com.fastcampus.boardproject.service.*;
+import com.fastcampus.boardproject.service.ArticleCommentService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

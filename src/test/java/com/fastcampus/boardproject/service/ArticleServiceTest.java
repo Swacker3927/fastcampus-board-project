@@ -1,9 +1,14 @@
 package com.fastcampus.boardproject.service;
 
 import com.fastcampus.boardproject.domain.*;
-import com.fastcampus.boardproject.domain.constant.*;
-import com.fastcampus.boardproject.dto.*;
-import com.fastcampus.boardproject.repository.*;
+import com.fastcampus.boardproject.domain.constant.SearchType;
+import com.fastcampus.boardproject.dto.ArticleDto;
+import com.fastcampus.boardproject.dto.ArticleWithCommentsDto;
+import com.fastcampus.boardproject.dto.HashtagDto;
+import com.fastcampus.boardproject.dto.UserAccountDto;
+import com.fastcampus.boardproject.repository.ArticleRepository;
+import com.fastcampus.boardproject.repository.HashtagRepository;
+import com.fastcampus.boardproject.repository.UserAccountRepository;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
