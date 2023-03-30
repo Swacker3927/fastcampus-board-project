@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.fastcampus'
-version = 'v1.1'
+version = 'v1.2'
 sourceCompatibility = '17'
 
 configurations {
@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.15'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
