@@ -36,4 +36,7 @@ Spring Boot
 * <https://port-0-fastcampus-board-project-nx562olfuhiak2.sel3.cloudtype.app>
 
 ## Reference
-* 유즈케이스 다이어그램: [#4](https://github.com/Swacker3927/fastcampus-board-project/issues/4), <https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=use-case.svg#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FSwacker3927%2Ffastcampus-board-project%2Fmain%2Fdocument%2Fuse-case.svg>
+* 유즈케이스 다이어그램: [#4](https://github.com/Swacker3927/fastcampus-board-project/issues/4),
+<https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=use-case.svg#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FSwacker3927%2Ffastcampus-board-project%2Fmain%2Fdocument%2Fuse-case.svg>
+* API Endpoint 구글 시트 [#1](https://github.com/Swacker3927/fastcampus-board-project/issues/1),
+<https://docs.google.com/spreadsheets/d/1CKfXA96ArIj8sJ-XWMKiN-x0Sd5lz3Rydh2AiQc2AJE/edit?usp=sharing>
