@@ -1,0 +1,50 @@
+name: Deploy to CloudType
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Connect deploy key
+        uses: cloudtype-github-actions/connect@v1
+        with:
+          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          ghtoken: ${{ secrets.GHP_TOKEN }}
+      - name: Deploy
+        uses: cloudtype-github-actions/deploy@v1
+        with:
+          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          project: sai6321/board-project
+          stage: main
+          yaml: |
+            name: fastcampus-board-project
+            app: java@17
+            options:
+              ports: 8080
+              env:
+                - name: DB_HOST
+                  value: mariadb
+                - name: DB_PORT
+                  value: "3306"
+                - name: DB_NAME
+                  value: board
+                - name: DB_USERNAME
+                  value: lee31
+                - name: DB_PASSWORD
+                  secret: mariadb-user-password
+                - name: SPRING_PROFILES_ACTIVE
+                  value: staging
+                - name: TZ
+                  value: Asia/Seoul
+                - name: KAKAO_OAUTH_CLIENT_ID
+                  value: f444fda2ceb6fcf2a14d5b3ce7e86bf4
+                - name: KAKAO_OAUTH_CLIENT_SECRET
+                  value: ix2TwcSs67HQqZGUMuF7HZmiOKxGuOKN
+            context:
+              git:
+                url: git@github.com:${{ github.repository }}.git
+                ref: ${{ github.ref }}
