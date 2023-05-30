@@ -1,6 +1,6 @@
 package com.fastcampus.boardproject.config;
 
-import com.fastcampus.boardproject.domain.UserAccount;
+import com.fastcampus.boardproject.domain.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -10,7 +10,11 @@ public class DataRestConfig {
     @Bean
     public RepositoryRestConfigurer repositoryRestConfigurer() {
         return RepositoryRestConfigurer.withConfig((config, cors) ->
-                config.exposeIdsFor(UserAccount.class)
+                config
+                        .exposeIdsFor(Article.class)
+                        .exposeIdsFor(ArticleComment.class)
+                        .exposeIdsFor(Hashtag.class)
+                        .exposeIdsFor(UserAccount.class)
         );
     }
 }
