@@ -1,6 +1,8 @@
 package com.fastcampus.boardproject.repository;
 
-import com.fastcampus.boardproject.domain.*;
+import com.fastcampus.boardproject.domain.Article;
+import com.fastcampus.boardproject.domain.QArticle;
+import com.fastcampus.boardproject.domain.projection.ArticleProjection;
 import com.fastcampus.boardproject.repository.querydsl.ArticleRepositoryCustom;
 
 import com.querydsl.core.types.dsl.DateTimeExpression;
@@ -13,7 +15,7 @@ import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource
+@RepositoryRestResource(excerptProjection = ArticleProjection.class)
 public interface ArticleRepository extends
         JpaRepository<Article, Long>,
         ArticleRepositoryCustom,
