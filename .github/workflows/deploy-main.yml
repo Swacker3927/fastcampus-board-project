@@ -18,13 +18,14 @@ jobs:
         uses: cloudtype-github-actions/deploy@v1
         with:
           token: ${{ secrets.CLOUDTYPE_TOKEN }}
-          project: sai6321/board-project
+          project: sai6321/board_project
           stage: main
           yaml: |
             name: fastcampus-board-project
-            app: java@17
+            app: java@21
             options:
               ports: 8080
+              strategy: rolling
               env:
                 - name: DB_HOST
                   value: mariadb
@@ -44,6 +45,7 @@ jobs:
                   value: f444fda2ceb6fcf2a14d5b3ce7e86bf4
                 - name: KAKAO_OAUTH_CLIENT_SECRET
                   value: ix2TwcSs67HQqZGUMuF7HZmiOKxGuOKN
+              buildenv: []
             context:
               git:
                 url: git@github.com:${{ github.repository }}.git
