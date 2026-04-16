@@ -2,7 +2,7 @@
 
 ## 개발 환경
 
-* Intellij IDEA
+* IntelliJ IDEA
 * Java 17
 * Gradle 7.6
 * Spring Boot 2.7.7
