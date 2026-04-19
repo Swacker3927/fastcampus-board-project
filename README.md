@@ -3,9 +3,9 @@
 ## 개발 환경
 
 * IntelliJ IDEA
-* Java 17
-* Gradle 7.6
-* Spring Boot 2.7.7
+* Java 21
+* Gradle 8.14.4
+* Spring Boot 3.3.1
 
 ## 기술 세부 스택
 
@@ -26,7 +26,7 @@ Spring Boot
 
 그 외
 
-* QueryDSL 5.0.0
+* QueryDSL 5.1.0
 * Bootstrap 5.2.3
 * Heroku
 
